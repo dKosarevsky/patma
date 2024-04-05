@@ -6,7 +6,7 @@ Since I don't have a parser yet, converted examples may contain bugs.
 
 Original:
 
-```
+```py
 def convert_field(self, value, conversion):
     # do any conversion on the resulting object
     if conversion is None:
@@ -22,7 +22,7 @@ def convert_field(self, value, conversion):
 
 Converted:
 
-```
+```py
 def convert_field(self, value, conversion):
     # do any conversion on the resulting object
     match conversion:
@@ -42,7 +42,7 @@ def convert_field(self, value, conversion):
 
 Original:
 
-```
+```py
 def write_value(self, value):
     if isinstance(value, str):
         self.simple_element("string", value)
@@ -80,7 +80,7 @@ def write_value(self, value):
 
 Converted:
 
-```
+```py
 def write_value(self, value):
     match value:
         case str():
@@ -121,7 +121,7 @@ def write_value(self, value):
 
 Original:
 
-```
+```py
 def _group_lengths(grouping):
     """Convert a localeconv-style grouping into a (possibly infinite)
     iterable of integers representing group lengths.
@@ -147,7 +147,7 @@ def _group_lengths(grouping):
 
 Converted:
 
-```
+```py
 def _group_lengths(grouping):
     """Convert a localeconv-style grouping into a (possibly infinite)
     iterable of integers representing group lengths.
@@ -177,7 +177,7 @@ def _group_lengths(grouping):
 
 Original:
 
-```
+```py
 def _convert(node):
     if isinstance(node, Constant):
         return node.value
@@ -206,7 +206,7 @@ def _convert(node):
 
 Converted:
 
-```
+```py
 def _convert(node):
     match node:
         case Constant(value=value):
@@ -240,7 +240,7 @@ def _convert(node):
 
 Original:
 
-```
+```py
 def optional_value_type(rtype: RType) -> Optional[RType]:
     """If rtype is the union of none_rprimitive and another type X, return X.
     Otherwise return None.
@@ -255,7 +255,7 @@ def optional_value_type(rtype: RType) -> Optional[RType]:
 
 Converted:
 
-```
+```py
 from types import SimpleNamespace
 
 def optional_value_type(rtype: RType) -> Optional[RType]:
@@ -276,7 +276,7 @@ def optional_value_type(rtype: RType) -> Optional[RType]:
 
 Original:
 
-```
+```py
 def flatten(self) -> Rhs:
     # If it's a single parenthesized group, flatten it.
     rhs = self.rhs
@@ -293,7 +293,7 @@ def flatten(self) -> Rhs:
 Converted (note that I had to name the classes `Alt` and `NamedItem`,
 which are anonymous in the original):
 
-```
+```py
 def flatten(self) -> Rhs:
     # If it's a single parenthesized group, flatten it.
     rhs = self.rhs
